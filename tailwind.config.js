@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'Haverford-red': 'rgba(165, 22, 22, 0.87)'
+      }
+    },
   },
   plugins: [],
 }

@@ -1,13 +1,12 @@
 import './App.css'
-import Homepage from './components/Homepage'
+import AdminUpdate from './Pages/AdminUpdate'
+import Homepage from './Pages/Homepage'
 
 function App() {
   
 
   return (
-    <div>
-      <Homepage />
-    </div>
+    <div></div>
   )
 }
 

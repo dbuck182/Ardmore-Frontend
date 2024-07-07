@@ -1,9 +1,9 @@
 import React, {image} from 'react';
 import BlackSquirrelDiscount from '../assets/BlackSquirrelDiscount.png';
-import BusinessList from './BusinessList';
+import BusinessList from '../components/BusinessList';
 import Ardmore from '../assets/Ardmore.jpeg'
-import Upcoming from './Upcoming';
-import NavBar from './NavBar';
+import Upcoming from '../components/Upcoming';
+import NavBar from '../components/NavBar';
 const Homepage = () => {
     return (
         <div className='space-y-10'>

@@ -1,11 +1,13 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import {useState} from 'react';
+import { Input } from "postcss";
 
 
 const AdminUpdate = () => {
 
     const [formData, setFormData] = useState({name: '',address: '' ,website: '', type: ''})
+    const [imageFile, setImageFile] = useState({name: '', file: null})
     const handleSubmit = async (event) => {
         
         event.preventDefault()
@@ -22,6 +24,30 @@ const AdminUpdate = () => {
         } catch (error) {
             console.error(error)
         }
+    }
+    const handlePhotoSubmit = async (event) => {
+        event.preventDefault()
+        const formData = new FormData()
+        formData.append("file", imageFile.file)
+        formData.append("name", imageFile.name)
+        console.log(imageFile.file.size)
+        try {
+            const data = await fetch("http://localhost:8080/api/photo/upload",{method: 'POST',
+                                body: formData,
+                                })
+            const newData = await data.json() 
+            console.log(newData)            
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    const handleNameChange = (event) => {
+        const {name, value} =event.target
+        setImageFile({...imageFile, [name]: value})
+    }
+    const handleImageChange = (event) => {
+        const target = event.target.files[0]
+        setImageFile({...imageFile, file: event.target.files[0]})
     }
 
     const handleChange = (event) => {
@@ -71,7 +97,7 @@ const AdminUpdate = () => {
                         <option value="RETAIL">Retail</option>
                         <option value="HEALTHBEAUTY">Health & Beauty</option>
                     </select>
-                    <label for="event-time">Date/Time</label>
+                    <label>Date/Time</label>
                     <input id="event-time" type="datetime-local"></input>
                     <button type="submit">Submit</button>
                 </form>
@@ -91,6 +117,15 @@ const AdminUpdate = () => {
                         <option value="RETAIL">Retail</option>
                         <option value="HEALTHBEAUTY">Health & Beauty</option>
                     </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div className="flex flex-col items-center mt-20">
+                <form onSubmit={handlePhotoSubmit}>
+                    <input type="file" name="file" onChange={handleImageChange}></input>
+                    <label id="file"></label>
+                    <input className="bg-white border"type="text" name="name" onChange={handleNameChange}></input>
+
                     <button type="submit">Submit</button>
                 </form>
             </div>

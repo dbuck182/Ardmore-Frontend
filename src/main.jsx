@@ -9,6 +9,7 @@ import {
 import Homepage from './Pages/Homepage.jsx';
 import ErrorPage from './Pages/error-page.jsx';
 import AdminUpdate from './Pages/AdminUpdate.jsx';
+import Login from './Pages/Login.jsx';
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminUpdate />
+  },
+  {
+    path: "/login",
+    element: <Login />
   }
 ])
 

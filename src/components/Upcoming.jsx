@@ -1,11 +1,14 @@
 import React from "react";
-
-
+import EventsCards from "./EventsCards";
 const Upcoming = () => {
     return (
-        <h2 className="font-bold text-2xl">
-            Upcoming Events and Happy Hours
+        <div>
+            <h2 className="font-bold text-2xl">
+            Upcoming Events In Ardmore
         </h2>
+        <EventsCards />
+        </div>
+        
     )
 }
 

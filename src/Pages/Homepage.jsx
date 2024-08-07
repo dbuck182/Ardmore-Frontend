@@ -6,12 +6,12 @@ import Upcoming from '../components/Upcoming';
 import NavBar from '../components/NavBar';
 const Homepage = () => {
     return (
-        <div className='space-y-10'>
+        <div className=''>
 
-            <NavBar />
+        <NavBar />
         
-        <div className="space-y-10">
-            <div className='flex flex-row items-center justify-items-center static'>
+        <div className="space-y-10 px-2">
+            <div className='flex flex-row items-center justify-items-center'>
                 <img className='z-0 blur-sm w-screen'src={Ardmore}></img>
                 <div className='z-10 absolute flex flex-row justify-center content-center justify-items-center items-center'>
                     <h2 className="text-3xl font-bold w-1/2 text-white bg-Haverford-red">

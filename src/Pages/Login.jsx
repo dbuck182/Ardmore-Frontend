@@ -14,9 +14,13 @@ function Login() {
         headers : {
           "Content-type": "application/json"
         }
+      }).then((response) => response.json())
+      .then((data) => {
+        setLoginForm({email: '', password: ''})
+        sessionStorage.setItem("authToken", data.token)
+        navigate("/admin")
       })
-      const data = await response.json()
-      navigate("/admin")
+      
       } catch (error){
         console.log(error)
       }

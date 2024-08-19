@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../components/NavBar";
 import {useState} from 'react';
 import { Input } from "postcss";
+import { useNavigate } from "react-router-dom";
 
 
 const AdminUpdate = () => {
-
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({name: '',address: '' ,website: '', type: ''})
     const [imageFile, setImageFile] = useState({name: '', file: null, BusinessId: null})
     const [eventForm, setEventForm] = useState({title: '', place: '', description: '', when_at: null})
@@ -18,10 +19,12 @@ const AdminUpdate = () => {
             const data = await fetch("http://localhost:8080/api/business",{method: 'POST',
                                 body: JSON.stringify(formData),
                                 headers: {
-                                    "Content-type": "application/json"
+                                    "Content-type": "application/json",
+                                    "Authorization": `Bearer ${sessionStorage.getItem("authToken")}`
                                 }})
             const newData = await data.json() 
-            console.log(newData)            
+            //console.log(newData)          
+            alert('Business submitted correctly.')  
         } catch (error) {
             console.error(error)
         }
@@ -57,7 +60,8 @@ const AdminUpdate = () => {
                                }
                                 })
             const newData = await data.json() 
-            console.log(newData)            
+            // console.log(newData)
+            alert("Photo Submitted Correctly.")
         } catch (error) {
             console.error(error)
         }
@@ -82,7 +86,12 @@ const AdminUpdate = () => {
             [name]: value
         })
     }
+    useEffect(() => {
+        if (!sessionStorage.getItem("authToken")){
+            navigate("/login")
+        }
 
+    }, [])
     return (
         <div className="relative">
             <NavBar/>

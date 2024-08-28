@@ -8,7 +8,7 @@ function Login() {
       event.preventDefault()
       console.log("Worked")
       try {
-        const response = await fetch("http://localhost:8080/auth/login",
+        const response = await fetch("http://ec2-44-201-79-47.compute-1.amazonaws.com:8080/auth/login",
         {method: 'POST',
         body: JSON.stringify(loginForm),
         headers : {

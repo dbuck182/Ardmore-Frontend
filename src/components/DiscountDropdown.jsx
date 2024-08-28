@@ -6,7 +6,7 @@ const DiscountDropdown = (props) => {
 
     const fethDiscounts = async (id) => {
         try {
-            const data = await fetch(`http://localhost:8080/api/discount/business/${id}`)
+            const data = await fetch(`http://ec2-44-201-79-47.compute-1.amazonaws.com:8080/api/discount/business/${id}`)
             const dealData = await data.json()
             if (dealData){
                 setDeals(dealData);

@@ -5,7 +5,7 @@ const EventsCards = () => {
   const [eventCards, setEventCards] = useState()
   const grabEvents = async () => {
     try {
-      const events = await fetch("http://localhost:8080/api/event/events")
+      const events = await fetch("http://ec2-44-201-79-47.compute-1.amazonaws.com:/api/event/events")
       const data = await events.json()
       console.log(data)
       setEvents(data)

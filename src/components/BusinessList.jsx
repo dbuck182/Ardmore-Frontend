@@ -12,8 +12,9 @@ const BusinessList = () => {
     const [businesses, setBusinesses] = useState()
 
     const getBusinesses = async () => {
+        // console.log(import.meta.env.FETCH_BUSINESSES)
         try {
-            const businessData = await fetch("http://localhost:8080/api/business/businesses")
+            const businessData = await fetch("http://ec2-44-201-79-47.compute-1.amazonaws.com:8080/api/business/businesses")
             const data = await businessData.json()
             setBusinesses(data)
             console.log(businesses)

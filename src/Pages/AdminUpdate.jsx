@@ -16,7 +16,7 @@ const AdminUpdate = () => {
         console.log(formData)
         
         try {
-            const data = await fetch("http://localhost:8080/api/business",{method: 'POST',
+            const data = await fetch("http://ec2-44-201-79-47.compute-1.amazonaws.com:8080/api/business",{method: 'POST',
                                 body: JSON.stringify(formData),
                                 headers: {
                                     "Content-type": "application/json",
@@ -34,7 +34,7 @@ const AdminUpdate = () => {
         event.preventDefault()
         console.log(eventForm)
         try {
-            const data = await fetch("http://localhost:8080/api/event", {method: 'POST',
+            const data = await fetch("http://ec2-44-201-79-47.compute-1.amazonaws.com:8080/api/event", {method: 'POST',
             body: JSON.stringify(eventForm),
         headers: {
             "Content-type": "application/json"
@@ -53,10 +53,11 @@ const AdminUpdate = () => {
         //console.log(imageFile.file.size)
         console.log(imageFile)
         try {
-            const data = await fetch("http://localhost:8080/api/photo/upload",{method: 'POST',
+            const data = await fetch("http://ec2-44-201-79-47.compute-1.amazonaws.com:8080/api/photo/upload",{method: 'POST',
                                body: formData,
                                headers: {
-                                "Host": "https://localhost:5173"
+                                "Host": "https://localhost:5173",
+                                "Authorization": `Bearer ${sessionStorage.getItem("authToken")}`
                                }
                                 })
             const newData = await data.json() 
@@ -95,7 +96,7 @@ const AdminUpdate = () => {
     return (
         <div className="relative">
             <NavBar/>
-            <div className="flex flex-row justify-center align-center grid-cols-4 gap-4 content-items-center">
+            <div className="justify-center align-center grid sm:grid-cols-2 grid-cols-1 gap-2 content-items-center">
 
             <div className="flex flex-col items-center mt-20">
                 <h2 className="text-2xl">Business Form</h2>
